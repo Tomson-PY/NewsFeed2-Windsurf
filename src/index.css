@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 250 250 255;
+    --foreground: 15 23 42;
+    
+    --card: 255 255 255;
+    --card-foreground: 15 23 42;
+    
+    --popover: 255 255 255;
+    --popover-foreground: 15 23 42;
+    
+    --primary: 124 58 237;
+    --primary-foreground: 250 250 255;
+    
+    --secondary: 241 245 249;
+    --secondary-foreground: 15 23 42;
+    
+    --muted: 241 245 249;
+    --muted-foreground: 100 116 139;
+    
+    --accent: 241 245 249;
+    --accent-foreground: 15 23 42;
+    
+    --destructive: 239 68 68;
+    --destructive-foreground: 250 250 255;
+    
+    --border: 226 232 240;
+    --input: 226 232 240;
+    --ring: 124 58 237;
+  }
+
+  .dark {
+    --background: 15 23 42;
+    --foreground: 226 232 240;
+    
+    --card: 30 41 59;
+    --card-foreground: 226 232 240;
+    
+    --popover: 30 41 59;
+    --popover-foreground: 226 232 240;
+    
+    --primary: 124 58 237;
+    --primary-foreground: 250 250 255;
+    
+    --secondary: 30 41 59;
+    --secondary-foreground: 226 232 240;
+    
+    --muted: 51 65 85;
+    --muted-foreground: 148 163 184;
+    
+    --accent: 51 65 85;
+    --accent-foreground: 226 232 240;
+    
+    --destructive: 239 68 68;
+    --destructive-foreground: 250 250 255;
+    
+    --border: 51 65 85;
+    --input: 51 65 85;
+    --ring: 124 58 237;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-xl font-medium transition-all duration-300 shadow-sm hover:shadow-md;
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary to-primary/90 text-primary-foreground hover:from-primary/90 hover:to-primary hover:scale-[1.02];
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
+
+  /* Category-specific tag colors */
+  .tag-AI.News {
+    @apply bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100;
+  }
+
+  .tag-Technology {
+    @apply bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-100;
+  }
+
+  .tag-Science {
+    @apply bg-violet-100 text-violet-800 dark:bg-violet-900 dark:text-violet-100;
+  }
+
+  /* Card styling */
+  .news-card {
+    @apply bg-card text-card-foreground rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-border;
+  }
+
+  .news-card-header {
+    @apply p-6 border-b border-border;
+  }
+
+  .news-card-footer {
+    @apply px-6 py-4 bg-muted/50;
+  }
+
+  /* Tooltip styles */
+  .tooltip {
+    @apply invisible absolute bg-popover text-popover-foreground text-sm px-3 py-2 
+           rounded-xl opacity-0 transition-all duration-300 delay-500 z-[100] whitespace-nowrap
+           -translate-x-1/2 left-1/2 shadow-xl border border-border;
+    bottom: calc(100% + 0.5rem);
+  }
+
+  .tooltip::after {
+    content: '';
+    @apply absolute w-0 h-0 left-1/2 -translate-x-1/2 border-transparent border-solid;
+    top: 100%;
+    border-width: 6px;
+    border-top-color: rgb(var(--popover));
+  }
+
+  .tooltip-wrapper {
+    @apply relative isolate;
+  }
+
+  .tooltip-wrapper:hover .tooltip {
+    @apply visible opacity-100;
+  }
+
+  /* Action buttons */
+  .action-button {
+    @apply p-2 rounded-xl transition-all duration-300 hover:scale-105;
+  }
+
+  /* Tag styling */
+  .tag-badge {
+    @apply inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-medium 
+           shadow-sm transition-all duration-300 hover:scale-105;
+  }
+
+  .tag-badge-default {
+    @apply bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground;
+  }
+
+  /* Section headers */
+  .section-header {
+    @apply bg-card rounded-2xl shadow-sm p-6 mb-6;
+  }
+}
